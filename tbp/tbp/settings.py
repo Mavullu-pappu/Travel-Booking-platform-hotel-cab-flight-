@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'tbp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tbpdb',
         'USER': 'root',
         'PASSWORD': 'Phani692004',
