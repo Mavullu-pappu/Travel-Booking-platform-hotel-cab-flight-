@@ -1,19 +1,168 @@
+
 {% load static %}
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Travel Booking Platform</title>
-
-    <link rel="stylesheet"
-          href="{% static 'css/home.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelGo - Travel Booking Platform</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
-
 <body>
-    <h1>Welcome to Travel Booking Platform</h1>
 
-    <p>Book Flights, Hotels and Cabs</p>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <h2 class="logo">Travel<span>Go</span></h2>
 
-    <button>Book Now</button>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#services">Services</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#about">About</a>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="/login/" class="login-btn">Login</a>
+                <a href="/signup/" class="signup-btn">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Explore the World with TravelGo</h1>
+            <p>Book flights, hotels and cabs in one place.
+               Your journey starts here!</p>
+            <a href="#booking" class="explore-btn">Explore Now</a>
+        </div>
+    </section>
+
+    <!-- Booking Search -->
+    <section class="booking-section" id="booking">
+        <div class="booking-container">
+            <h2>Plan Your Next Journey</h2>
+            <p>Find the best travel options for your trip</p>
+
+            <div class="booking-tabs">
+                <button class="tab active" type="button"
+                        data-type="flight">✈ Flights</button>
+                <button class="tab" type="button"
+                        data-type="hotel">🏨 Hotels</button>
+                <button class="tab" type="button"
+                        data-type="cab">🚕 Cabs</button>
+            </div>
+
+            <form class="search-form" method="get" action="/flights/">
+                <div class="form-group">
+                    <label for="source">From / Location</label>
+                    <input type="text" id="source" name="source"
+                           placeholder="Enter departure city" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">To / Destination</label>
+                    <input type="text" id="destination"
+                           name="destination"
+                           placeholder="Enter destination" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="travel-date">Travel Date</label>
+                    <input type="date" id="travel-date"
+                           name="travel_date" required>
+                </div>
+
+                <button type="submit" class="search-btn">
+                    Search Now
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <p>Everything you need for a perfect journey</p>
+
+        <div class="service-container">
+            <div class="service-card">
+                <div class="service-icon">✈️</div>
+                <h3>Flight Booking</h3>
+                <p>Find and book flights to your favorite
+                   destinations at affordable prices.</p>
+                <a href="/flights/">Book Flights →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏨</div>
+                <h3>Hotel Booking</h3>
+                <p>Discover comfortable hotels and rooms
+                   for a relaxing stay.</p>
+                <a href="/hotels/">Book Hotels →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚕</div>
+                <h3>Cab Booking</h3>
+                <p>Book reliable cabs for convenient
+                   and comfortable travel.</p>
+                <a href="/cabs/">Book Cabs →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section class="destinations" id="destinations">
+        <h2>Popular Destinations</h2>
+        <p>Discover beautiful places across India</p>
+
+        <div class="destination-container">
+            <div class="destination-card">
+                <div class="destination-image goa"></div>
+                <div class="destination-info">
+                    <h3>Goa</h3>
+                    <p>Beautiful beaches and sunsets</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image manali"></div>
+                <div class="destination-info">
+                    <h3>Manali</h3>
+                    <p>Mountains and adventure</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image jaipur"></div>
+                <div class="destination-info">
+                    <h3>Jaipur</h3>
+                    <p>Royal palaces and culture</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <h2>Why Choose TravelGo?</h2>
+        <p>
+            TravelGo makes your journey simple and convenient.
+            Search flights, explore hotels and find cabs
+            from one easy-to-use platform.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2>TravelGo</h2>
+        <p>Your trusted travel booking platform</p>
+        <p>© 2026 TravelGo. All Rights Reserved.</p>
+    </footer>
+
+   
+       <script src="{% static 'js/home.js' %}"></script>
 </body>
 </html>
