@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Hotels - TravelGo</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/hotels.css' %}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo">TravelGo</div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/flights/">Flights</a>
+            <a href="/hotels/" class="active">Hotels</a>
+            <a href="/cabs/">Cabs</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Hotel</h1>
+            <p>Discover comfortable stays for your next trip.</p>
+        </div>
+    </section>
+
+    <!-- Hotel Search Form -->
+    <section class="booking-section">
+
+        <h2>Search Hotels</h2>
+        <p class="subtitle">
+            Enter your destination and stay details to find hotels.
+        </p>
+
+        <form action="{% url 'hotels' %}" method="GET" class="hotel-form">
+
+            <div class="form-group">
+                <label for="location">Destination</label>
+                <input type="text"
+                       id="location"
+                       name="location"
+                       placeholder="Enter city or destination"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="checkin">Check-in Date</label>
+                <input type="date"
+                       id="checkin"
+                       name="checkin"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="checkout">Check-out Date</label>
+                <input type="date"
+                       id="checkout"
+                       name="checkout"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="guests">Guests</label>
+                <select id="guests" name="guests" required>
+                    <option value="1">1 Guest</option>
+                    <option value="2" selected>2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                    <option value="5">5 Guests</option>
+                    <option value="6">6 Guests</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="rooms">Rooms</label>
+                <select id="rooms" name="rooms" required>
+                    <option value="1" selected>1 Room</option>
+                    <option value="2">2 Rooms</option>
+                    <option value="3">3 Rooms</option>
+                    <option value="4">4 Rooms</option>
+                </select>
+            </div>
+
+            <button type="submit" class="search-btn">
+                Search Hotels
+            </button>
+
+        </form>
+    </section>
+
+    <!-- Popular Hotels -->
+    <section class="hotels-section">
+
+        <h2>Explore Popular Stays</h2>
+        <p class="subtitle">
+            Find the right accommodation for your journey.
+        </p>
+
+        <div class="hotel-container">
+
+            <div class="hotel-card">
+                <div class="hotel-icon">🏨</div>
+                <h3>Luxury Hotels</h3>
+                <p>Enjoy premium rooms and exceptional comfort.</p>
+                <span class="hotel-type">Luxury Stay</span>
+            </div>
+
+            <div class="hotel-card">
+                <div class="hotel-icon">🏢</div>
+                <h3>Business Hotels</h3>
+                <p>Convenient stays for business and work trips.</p>
+                <span class="hotel-type">Business Stay</span>
+            </div>
+
+            <div class="hotel-card">
+                <div class="hotel-icon">🏡</div>
+                <h3>Budget Hotels</h3>
+                <p>Comfortable accommodation at affordable prices.</p>
+                <span class="hotel-type">Budget Stay</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 TravelGo. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

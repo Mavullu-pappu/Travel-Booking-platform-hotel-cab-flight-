@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Flights - TravelGo</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/flights.css' %}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo">TravelGo</div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/flights/" class="active">Flights</a>
+            <a href="/hotels/">Hotels</a>
+            <a href="/cabs/">Cabs</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Flight</h1>
+            <p>Explore destinations and book your next journey with ease.</p>
+        </div>
+    </section>
+
+    <!-- Flight Search Section -->
+    <section class="booking-section">
+
+        <h2>Search Flights</h2>
+        <p class="subtitle">Enter your travel details to find available flights.</p>
+
+        <form action="{% url 'flights' %}" method="GET" class="flight-form">
+
+            <!-- Trip Type -->
+            <div class="trip-type">
+                <label>
+                    <input type="radio" name="trip_type"
+                           value="one_way" checked>
+                    One Way
+                </label>
+
+                <label>
+                    <input type="radio" name="trip_type"
+                           value="round_trip">
+                    Round Trip
+                </label>
+            </div>
+
+            <!-- Source -->
+            <div class="form-group">
+                <label for="source">From</label>
+                <input type="text"
+                       id="source"
+                       name="source"
+                       placeholder="Enter departure city"
+                       required>
+            </div>
+
+            <!-- Destination -->
+            <div class="form-group">
+                <label for="destination">To</label>
+                <input type="text"
+                       id="destination"
+                       name="destination"
+                       placeholder="Enter destination city"
+                       required>
+            </div>
+
+            <!-- Departure Date -->
+            <div class="form-group">
+                <label for="departure_date">Departure Date</label>
+                <input type="date"
+                       id="departure_date"
+                       name="departure_date"
+                       required>
+            </div>
+
+            <!-- Return Date -->
+            <div class="form-group">
+                <label for="return_date">Return Date</label>
+                <input type="date"
+                       id="return_date"
+                       name="return_date">
+            </div>
+
+            <!-- Passengers -->
+            <div class="form-group">
+                <label for="passengers">Passengers</label>
+                <select id="passengers" name="passengers" required>
+                    <option value="1">1 Passenger</option>
+                    <option value="2">2 Passengers</option>
+                    <option value="3">3 Passengers</option>
+                    <option value="4">4 Passengers</option>
+                    <option value="5">5 Passengers</option>
+                    <option value="6">6 Passengers</option>
+                </select>
+            </div>
+
+            <!-- Class -->
+            <div class="form-group">
+                <label for="travel_class">Travel Class</label>
+                <select id="travel_class" name="travel_class" required>
+                    <option value="economy">Economy</option>
+                    <option value="premium_economy">Premium Economy</option>
+                    <option value="business">Business</option>
+                    <option value="first">First Class</option>
+                </select>
+            </div>
+
+            <button type="submit" class="search-btn">
+                Search Flights
+            </button>
+
+        </form>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="destinations">
+
+        <h2>Popular Destinations</h2>
+        <p class="subtitle">Discover some of India's popular travel destinations.</p>
+
+        <div class="destination-container">
+
+            <div class="destination-card">
+                <div class="destination-icon">🏙️</div>
+                <h3>Hyderabad</h3>
+                <p>Explore history, food and culture.</p>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-icon">🌊</div>
+                <h3>Goa</h3>
+                <p>Enjoy beautiful beaches and sunsets.</p>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-icon">🏰</div>
+                <h3>Delhi</h3>
+                <p>Discover historical landmarks.</p>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-icon">🌆</div>
+                <h3>Mumbai</h3>
+                <p>Experience the city that never sleeps.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 TravelGo. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

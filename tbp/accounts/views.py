@@ -75,3 +75,8 @@ def signup(request):
         return redirect("signup")
 
     return render(request, "signup.html")
+
+def login(request):
+         if request.method == "POST":
+            return redirect("home")
+         return render(request, "login.html")
