@@ -104,87 +104,107 @@ html {
     font-weight: bold;
 }
 
-/* Booking */
-.booking-section {
-    padding: 50px 7%;
-}
-
-.booking-container {
-    max-width: 1150px;
-    margin: auto;
-    background: white;
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+/* Why Choose TravelGo */
+.why-travelgo {
+    width: 100%;
+    padding: 70px 20px;
+    background-color: #f4f7fb;
     text-align: center;
 }
 
-.booking-container h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
+.why-travelgo h2 {
+    font-size: 34px;
+    color: #102a43;
+    margin: 0 auto 12px;
+    text-align: center;
 }
 
-.booking-container > p {
-    color: #748092;
-}
-
-.booking-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 30px 0;
-}
-
-.tab {
-    border: 1px solid #ddd;
-    background: #f2f5fa;
-    padding: 13px 28px;
-    border-radius: 8px;
+.why-travelgo .section-subtitle {
+    color: #666;
     font-size: 16px;
-    cursor: pointer;
+    margin: 0 auto 40px;
+    text-align: center;
+    max-width: 650px;
+    line-height: 1.6;
 }
-
-.tab.active {
-    background: #173b67;
-    color: white;
-}
-
-.search-form {
-    display: flex;
-    gap: 15px;
-    align-items: end;
-}
-
-.form-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    gap: 10px;
-}
-
-.form-group label {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #d7dfe8;
-    border-radius: 8px;
-    font-size: 14px;
-}
-
+/* Search Button */
 .search-btn {
-    padding: 15px 25px;
-    background: #ff8547;
-    color: white;
+    width: 10%;
+    padding: 15px;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
+    background-color: #ff9800;
+    color: white;
+    font-size: 17px;
     font-weight: bold;
+    cursor: pointer;
 }
+
+.search-btn:hover {
+    background-color: #e68900;
+}
+
+/* Center the benefit cards */
+.benefits-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.benefit-card {
+    width: 100%;
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-7px);
+}
+
+.benefit-icon {
+    font-size: 42px;
+    margin-bottom: 18px;
+}
+
+.benefit-card h3 {
+    color: #1565c0;
+    margin-bottom: 12px;
+}
+
+.benefit-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .benefits-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+    .benefits-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .why-travelgo h2 {
+        font-size: 28px;
+    }
+}
+
+
 
 /* Services */
 .services,

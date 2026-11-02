@@ -1,8 +1,10 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password,check_password
 from django.db import IntegrityError
+from django.views.decorators.http import require_POST
+
 from .models import Users
 
 
@@ -80,3 +82,68 @@ def login(request):
          if request.method == "POST":
             return redirect("home")
          return render(request, "login.html")
+# LOGIN
+def login_view(request):
+
+    if request.session.get('user_id'):
+        return redirect('home')
+
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip()
+        password = request.POST.get('password', '')
+
+        # Find the user by email
+        user = Users.objects.filter(email__iexact=email).first()
+
+        # Check email and password
+        if user and check_password(password, user.password):
+
+            # Store user information in session
+            request.session.cycle_key()
+            request.session['user_id'] = user.user_id
+            request.session['role'] = user.role
+
+            messages.success(request, 'Login successful! Welcome to TravelGo.')
+
+            # Redirect to home page
+            return redirect('home')
+
+        else:
+            messages.error(request, 'Invalid email or password.')
+
+    return render(request, 'login.html')
+
+
+# USER PROFILE
+def profile_view(request):
+
+    user_id = request.session.get('user_id')
+
+    # Check whether the user is logged in
+    if not user_id:
+        messages.error(request, 'Please login to view your profile.')
+        return redirect('login')
+
+    # Fetch the logged-in user's details
+    user = get_object_or_404(
+        Users,
+        user_id=user_id
+    )
+
+    return render(
+        request,
+        'profile.html',
+        {'user': user}
+    )
+
+
+# LOGOUT
+@require_POST
+def logout_view(request):
+
+    # Remove the logged-in user's session
+    request.session.flush()
+
+    messages.success(request, 'You have logged out successfully.')
+
+    return redirect('home')

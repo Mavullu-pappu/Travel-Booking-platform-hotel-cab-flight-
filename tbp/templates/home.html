@@ -20,6 +20,18 @@
                 <a href="#services">Services</a>
                 <a href="#destinations">Destinations</a>
                 <a href="#about">About</a>
+
+                {% if request.session.user_id %}
+
+                   <a href="{% url 'profile' %}">Profile</a>
+
+                {% else %}
+
+                    <a href="{% url 'login' %}">Login</a>
+
+                    <a href="{% url 'signup' %}">Signup</a>
+
+                {% endif %}
             </div>
 
             <div class="nav-buttons">
@@ -27,6 +39,15 @@
                 <a href="/signup/" class="signup-btn">Sign Up</a>
             </div>
         </nav>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p class="{{ message.tags }}">
+                        {{ message }}
+                    </p>
+                {% endfor %}
+            </div>
+        {% endif %}
     </header>
 
     <!-- Hero Section -->
@@ -39,47 +60,81 @@
         </div>
     </section>
 
-    <!-- Booking Search -->
-    <section class="booking-section" id="booking">
-        <div class="booking-container">
-            <h2>Plan Your Next Journey</h2>
-            <p>Find the best travel options for your trip</p>
+    
+<!-- Why Choose TravelGo -->
+<section class="why-travelgo">
+    <h2>Travel Made Simple</h2>
+    <p class="section-subtitle">
+        Everything you need for a smooth and memorable journey.
+    </p>
 
-            <div class="booking-tabs">
-                <button class="tab active" type="button"
-                        data-type="flight">✈ Flights</button>
-                <button class="tab" type="button"
-                        data-type="hotel">🏨 Hotels</button>
-                <button class="tab" type="button"
-                        data-type="cab">🚕 Cabs</button>
-            </div>
+    <div class="benefits-container">
 
-            <form class="search-form" method="get" action="/flights/">
-                <div class="form-group">
-                    <label for="source">From / Location</label>
-                    <input type="text" id="source" name="source"
-                           placeholder="Enter departure city" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="destination">To / Destination</label>
-                    <input type="text" id="destination"
-                           name="destination"
-                           placeholder="Enter destination" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="travel-date">Travel Date</label>
-                    <input type="date" id="travel-date"
-                           name="travel_date" required>
-                </div>
-
-                <button type="submit" class="search-btn">
-                    Search Now
-                </button>
-            </form>
+        <div class="benefit-card">
+            <div class="benefit-icon">🌍</div>
+            <h3>Explore More</h3>
+            <p>Discover exciting destinations and create unforgettable memories.</p>
         </div>
-    </section>
+
+        <div class="benefit-card">
+            <div class="benefit-icon">💰</div>
+            <h3>Affordable Travel</h3>
+            <p>Plan your trips with options that suit your budget.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon">🔒</div>
+            <h3>Easy Booking</h3>
+            <p>Enjoy a simple and convenient booking experience in one place.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon">🧳</div>
+            <h3>Travel with Comfort</h3>
+            <p>Make every journey more comfortable from start to finish.</p>
+        </div>
+
+    </div>
+
+
+        <!-- Search Button -->
+        <button type="button"
+                class="search-btn"
+                id="searchNow">
+            Search Now
+        </button>
+
+    </div>
+
+</section>
+
+<!-- JavaScript -->
+<script>
+    const tabs = document.querySelectorAll(".booking-tabs .tab");
+    const searchButton = document.getElementById("searchNow");
+
+    let selectedUrl = "/flights/";
+
+    tabs.forEach(function(tab) {
+
+        tab.addEventListener("click", function() {
+
+            tabs.forEach(function(item) {
+                item.classList.remove("active");
+            });
+
+            this.classList.add("active");
+
+            selectedUrl = this.dataset.url;
+        });
+
+    });
+
+    searchButton.addEventListener("click", function() {
+        window.location.href = selectedUrl;
+    });
+</script>
+
 
     <!-- Services -->
     <section class="services" id="services">

@@ -5,6 +5,10 @@ from django.db import IntegrityError
 from .models import Users
 # Create your views here.
 def cabs(request):
-         if request.method == "POST":
-            return redirect("cabs")
-         return render(request, "cabs.html")
+   if not request.session.get('user_id'):
+      messages.error(request, "Please log in to access this page.")
+      return redirect("login")
+
+   if request.method == "POST":
+      return redirect("cabs")
+   return render(request, "cabs.html")

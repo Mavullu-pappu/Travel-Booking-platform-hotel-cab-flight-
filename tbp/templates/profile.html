@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - TravelGo</title>
+
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+
+    <div class="profile-container">
+
+        <h1>My Profile</h1>
+
+        <p class="welcome">
+            Welcome, {{ user.name }}!
+        </p>
+
+        <div class="profile-details">
+
+            <div class="detail-row">
+                <span>User ID</span>
+                <span>{{ user.user_id }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span>Full Name</span>
+                <span>{{ user.name }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span>Email</span>
+                <span>{{ user.email }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span>Phone</span>
+                <span>{{ user.phone }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span>Role</span>
+                <span>{{ user.role }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span>Provider Type</span>
+                <span>{{ user.provider_type|default:"N/A" }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span>Provider Company</span>
+                <span>{{ user.provider_company_name|default:"N/A" }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span>Account Created</span>
+                <span>{{ user.created_at|date:"d M Y, h:i A" }}</span>
+            </div>
+
+        </div>
+
+        <div class="profile-actions">
+
+            <a href="{% url 'home' %}" class="home-btn">
+                Back to Home
+            </a>
+
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+
+                <button type="submit" class="logout-btn">
+                    Logout
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
