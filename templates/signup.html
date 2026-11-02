@@ -1,0 +1,117 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | TravelGo</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    
+    <header class="navbar">
+        <a href="/" class="logo">Travel<span>Go</span></a>
+        <a href="/" class="home-link">Home</a>
+    </header>
+
+    <main class="signup-section">
+        <div class="signup-container">
+
+            <div class="signup-header">
+                <h1>Create Account</h1>
+                <p>Join TravelGo and start your journey today</p>
+            </div>
+
+            <form method="POST" action="{% url 'signup' %}">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone"
+                           placeholder="Enter 10-digit mobile number"
+                           pattern="[0-9]{10}" maxlength="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Register As</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select Role</option>
+                        <option value="Customer">Customer</option>
+                        <option value="Provider">Provider</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="company-group"
+                     style="display: none;">
+                    <label for="company_name">Company Name</label>
+                    <input type="text" id="company_name"
+                           name="company_name"
+                           placeholder="Enter company name">
+                </div>
+               <div class="form-group" id="provider-type-group"
+                     style="display: none;">
+
+                    <label for="provider_type">Provider Type</label>
+
+                    <select name="provider_type" id="provider_type">
+                          <option value="">Select Provider Type</option>
+                          <option value="Flight">Flight Provider</option>
+                          <option value="Hotel">Hotel Provider</option>
+                          <option value="Cab">Cab Provider</option>
+        
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password"
+                           name="password"
+                           placeholder="Create password"
+                           minlength="8" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">
+                        Confirm Password
+                    </label>
+                    <input type="password" id="confirm_password"
+                           name="confirm_password"
+                           placeholder="Confirm your password"
+                           minlength="8" required>
+                </div>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="message">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <button type="submit" class="signup-btn">
+                    Create Account
+                </button>
+
+                <p class="login-text">
+                    Already have an account?
+                    <a href="/login/">Login</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+      <script src="{% static 'js/signup.js' %}"></script>
+</body>
+</html>

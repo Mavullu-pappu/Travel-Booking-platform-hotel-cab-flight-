@@ -1,22 +1,389 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: lightblue;
     font-family: Arial, sans-serif;
+    background: #f7f9fc;
+    color: #1c2938;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 7%;
+    background: white;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.logo {
+    font-size: 28px;
+    color: #173b67;
+}
+
+.logo span {
+    color: #ff8547;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a,
+.nav-buttons a {
+    text-decoration: none;
+    color: #263b52;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #ff8547;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.signup-btn {
+    background: #ff8547;
+    color: white !important;
+    padding: 11px 20px;
+    border-radius: 8px;
+}
+
+/* Hero */
+.hero {
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background:
+        linear-gradient(rgba(10,30,55,0.55),
+                        rgba(10,30,55,0.55)),
+        url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600")
+        center/cover;
+    color: white;
+}
+
+.hero-content {
+    max-width: 780px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.explore-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #ff8547;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* Why Choose TravelGo */
+.why-travelgo {
+    width: 100%;
+    padding: 70px 20px;
+    background-color: #f4f7fb;
     text-align: center;
 }
 
-h1 {
-    color: darkblue;
+.why-travelgo h2 {
+    font-size: 34px;
+    color: #102a43;
+    margin: 0 auto 12px;
+    text-align: center;
 }
 
-p {
-    font-size: 20px;
+.why-travelgo .section-subtitle {
+    color: #666;
+    font-size: 16px;
+    margin: 0 auto 40px;
+    text-align: center;
+    max-width: 650px;
+    line-height: 1.6;
 }
-
-button {
-    background-color: green;
-    color: white;
-    padding: 12px 25px;
+/* Search Button */
+.search-btn {
+    width: 10%;
+    padding: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    background-color: #ff9800;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
     cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #e68900;
+}
+
+/* Center the benefit cards */
+.benefits-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.benefit-card {
+    width: 100%;
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-7px);
+}
+
+.benefit-icon {
+    font-size: 42px;
+    margin-bottom: 18px;
+}
+
+.benefit-card h3 {
+    color: #1565c0;
+    margin-bottom: 12px;
+}
+
+.benefit-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .benefits-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+    .benefits-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .why-travelgo h2 {
+        font-size: 28px;
+    }
+}
+
+
+
+/* Services */
+.services,
+.destinations {
+    padding: 70px 7%;
+    text-align: center;
+}
+
+.services h2,
+.destinations h2,
+.about h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.services > p,
+.destinations > p {
+    color: #748092;
+    margin-bottom: 35px;
+}
+
+.service-container,
+.destination-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.service-card {
+    padding: 35px 25px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.service-card:hover,
+.destination-card:hover {
+    transform: translateY(-6px);
+}
+
+.service-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #718092;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.service-card a {
+    text-decoration: none;
+    color: #ed7437;
+    font-weight: bold;
+}
+
+/* Destinations */
+.destinations {
+    background: #edf3fa;
+}
+
+.destination-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.destination-image {
+    height: 210px;
+    background-position: center;
+    background-size: cover;
+}
+
+.goa {
+    background-image: url("https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800");
+}
+
+.manali {
+    background-image: url("https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800");
+}
+
+.jaipur {
+    background-image: url("https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?w=800");
+}
+
+.destination-info {
+    padding: 20px;
+}
+
+.destination-info h3 {
+    margin-bottom: 8px;
+}
+
+.destination-info p {
+    color: #718092;
+}
+
+/* About */
+.about {
+    text-align: center;
+    padding: 75px 10%;
+}
+
+.about p {
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.9;
+    color: #718092;
+}
+
+/* Footer */
+footer {
+    background: #102d4f;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+footer h2 {
+    margin-bottom: 15px;
+}
+
+footer p {
+    margin-top: 10px;
+    color: #d4deeb;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+    }
+
+    .search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .service-container,
+    .destination-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .booking-tabs {
+        flex-wrap: wrap;
+    }
+
+    .booking-container {
+        padding: 22px;
+    }
+
+    .service-container,
+    .destination-container {
+        grid-template-columns: 1fr;
+    }
 }
